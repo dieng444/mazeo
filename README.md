@@ -22,7 +22,7 @@ Mazeo is php5 framework that allow developer to build strong and secure php web 
 - FlashInfo
 - Locale (Translator)
 
-## Install and the framework
+## Install & Run the framework
 
 1. Clone the project from this repository
 
