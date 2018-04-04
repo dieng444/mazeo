@@ -1,0 +1,24 @@
+{
+  "name": "Mazeo - Framework",
+  "type": "project",
+  "description": "Mazeo version 1",
+  "keywords": [
+    "framework",
+    "Mazeo"
+  ],
+  "authors": [
+    {
+      "name": "Macky Dieng",
+      "homepage": "http://mackydieng.fr/"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3",
+    "twig/twig": "~1.0",
+    "ircmaxell/password-compat": "dev-master",
+    "twbs/bootstrap":"4.0.0-alpha.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.1"
+  }
+}

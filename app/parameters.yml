@@ -1,0 +1,11 @@
+database:
+  driver: pgsql
+  host: localhost
+  port: ~
+  name:
+  user:
+  password:
+
+env:
+  prod: false
+  dev: true

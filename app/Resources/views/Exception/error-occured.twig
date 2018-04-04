@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Erreur interne</title>
+        {{asset.assignAssetFile(null,'font-awesome-4.7.0/css/font-awesome.min.css',true) | raw }}
+        {{ asset.assignAssetFile(null,'stylesheets/error.css',true) | raw }}
+    </head>
+    <title>Oops erreur interne detectée!!!</title>
+    <body>
+      <header><a href="https://www.myafrideal.fr" title="https://www.myafrideal.fr" target="_blank">www.myafrideal.fr</a></header>
+        <div class="body">
+          <p class="error-icon"><i class="fa fa-exclamation-triangle fa-5x"></i></p>
+          <h2>Une erreur interne s'est poduite lors de la manipulation</h2>
+          <p>Nous sommes désolés pour ce désagrément occasionné et essaierons d'y remedier au plus vite.</p>
+          <p>Vous pouvez réessayer la manipulation ou revenir plus tard.</p>
+          <p>Merci de votre compréhension.</p>
+        </div>
+    </body>
+</html>

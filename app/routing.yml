@@ -1,0 +1,13 @@
+
+#Example for package User in app Acme
+Acme_user:
+  base: Acme:UserBundle
+
+#default_route:
+#  path: /
+#  controller: Acme:User:home
+#  method: GET
+default_route:
+  path: /
+  controller: Acme:UserBundle:User:home
+  method: GET

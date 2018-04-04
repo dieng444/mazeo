@@ -1,0 +1,9 @@
+acme_user_home:
+  path: /home
+  controller: Acme:UserBundle:User:home
+  method: MIXED
+
+acme_user_signup:
+  path: /signup
+  controller: Acme:UserBundle:User:signup
+  method: MIXED

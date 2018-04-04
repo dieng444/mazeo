@@ -1,0 +1,30 @@
+{% extends '@AcmeUserBundle/layout.twig' %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h2>New account</h2>
+        {{form.header | raw}}
+          <fieldset class="form-group">
+            {{form.getLabel('name') | raw}}
+            {{form.getInput('name') | raw}}
+          </fieldset>
+          <div class="error" style="color:red;">{{ form.getError('name') | raw }}</div>
+          <fieldset class="form-group">
+            {{form.getLabel('login') | raw}}
+            {{form.getInput('login') | raw}}
+          </fieldset>
+          <div class="error" style="color:red;">{{ form.getError('login') | raw }}</div>
+          <fieldset class="form-group">
+            {{form.getLabel('password') | raw}}
+            {{form.getInput('password') | raw}}
+          </fieldset>
+          <div class="error" style="color:red;" style="color:red;">{{ form.getError('password') | raw }}</div>
+          <fieldset class="form-group">
+            {{form.footer| raw}}
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

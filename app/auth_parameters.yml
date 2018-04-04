@@ -1,0 +1,4 @@
+auth:
+  provider: Acme\UserBundle\Manager\UserManager
+  passwordColumn: password
+  usernameColumn: login

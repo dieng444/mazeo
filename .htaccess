@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+     # Protect hidden files from being viewed
+    <Files .*>
+        Order Deny,Allow
+        Deny From All
+    </Files>
+    # if file not exists
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # if dir not exists
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # Do not rewrite fave icon
+    RewriteCond %{REQUEST_FILENAME} !favicon.ico$
+    # avoid 404s of missing assets in our script
+    RewriteRule ^(.*)$ index.php/ [QSA,L]
+</IfModule>

@@ -1,0 +1,49 @@
+form:
+  action: /signup
+  method: post
+  attributes:
+    id: acme-user-add-form
+    enctype: "multipart/form-data"
+  submit:
+    type: submit
+    text: Subscribe
+    attributes:
+      class: [btn,btn-success,form-control]
+
+name:
+  type: text
+  blank: true
+  label: {label: FullName}
+  blank: false
+  empty_error_msg: Fullname is required
+  attributes:
+    class: [form-control]
+
+login:
+  type: text
+  blank: false
+  empty_error_msg: Login is required
+  label: {label: Login}
+  attributes:
+    class: [form-control]
+
+
+password:
+  type: password
+  blank: false
+  min_length: 6
+  empty_error_msg: Password is required
+  length_error_msg: Length of password most reached 6 caracters
+  helper_msg: Use strong password
+  label: {label: Password *}
+  attributes:
+    class: [form-control,cu-field]
+
+passwordConfirm:
+  type: password
+  detached: true
+  mustBeIdenticalTo: password
+  identical_error_msg: The two password are not equal
+  label: {label: Confirm password *}
+  attributes:
+    class: [form-control]

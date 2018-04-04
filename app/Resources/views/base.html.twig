@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8">
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81691746-2"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-81691746-2');
+      </script>
+      <!-- Google Analytics code -->
+      <!-- Facebook Pixel Code -->
+      <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '882072128635589');
+        fbq('track', 'PageView');
+      </script>
+      <!-- End Facebook Pixel Code -->
+
+    {% block metadata %}
+
+    {% endblock %}
+    <meta name="google-site-verification" content="B5rdhbLpmmQwGgLPamXE4vIYPfWvlDhyELtJEenj-rU"/>
+    <title>{% block title %}myafrideal - site de petites annonces des produits et services afro-antillais{% endblock %}</title>
+    {{ asset.assignAssetFile(null,'stylesheets/bootstrap.css',true) | raw }}
+    {{ asset.assignAssetFile(null,'stylesheets/bootstrap-theme.css',true) | raw }}
+    {{ asset.assignAssetFile(null,'lib/js/jquery-ui-1.11.2.custom/jquery-ui.min.css',true) | raw }}
+    {{ asset.assignAssetFile(null,'stylesheets/shared.css',true) | raw }}
+    {{ asset.assignAssetFile(null,'stylesheets/style.css',true) | raw }}
+    {{ asset.assignAssetFile(null,'font-awesome-4.7.0/css/font-awesome.min.css',true) | raw }}
+    {{ asset.assignAssetFile(null,'stylesheets/bootstrap-override.css',true) | raw }}
+    {{ asset.assignAssetFile(null,'stylesheets/offer_list.css',true) | raw }}
+    <meta name="viewport" content="user-scalable=no, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, width=device-width">
+    {% block stylesheets %}{% endblock %}
+    <link rel="shortcut icon" href="{{ asset.assignAssetFile(null,'img/site/icons/front/favicon.ico',true) | raw }}">
+    <noscript>
+      <META HTTP-EQUIV="Refresh" CONTENT="0;URL=/nojs">
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=882072128635589&ev=PageView&noscript=1"/>
+    </noscript>
+  </head>
+  <body>
+    <div class="spinner">
+      <div class="content">
+        <figure>
+          <img src="{{asset.assignAssetFile(null,'img/spinner.gif',true) | raw }}" alt="spinner">
+          <p>Traitement en cours...</p>
+        </figure>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="log-out-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Confirmez la déconnexion</h4>
+          </div>
+          <div class="modal-body">
+            <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-default" id="cancel-log-out">Annuler</a>
+            <a href="/logout" class="btn btn-danger" id="confirm-log-out">Continuer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container" id="navbar-header">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+              <figure>
+                <img src="{{ asset.assignAssetFile(null,'img/site/icons/front/400dpiLogoCropped.png',true) | raw }}" alt="logo-myafrideal" />
+              </figure>
+              <!--Loura-->
+            </a>
+          </div>
+          <div class="navbar-collapse collapse" style="height: auto;">
+            <ul class="nav navbar-nav">
+              <li><a href="/">{{_.getText('Accueil')}}</a></li>
+              <li><a href="/offers" class="{% if global.route.name == 'loura_offer_list' %}active{% endif %}">{{_.getText('Annonces')}}</a></li>
+              <li><a href="/offers/add" class="{% if global.route.name == 'loura_offer_add' %}active{% endif %}">{{_.getText('Publier une annonce')}}</a></li>
+              <li>
+                <a href="/dashboard" class="{% if global.route.name == 'loura_user_dashboard' %}active{% endif %}"><i class="fa fa-user"></i>
+                  {% if auth.isConnected %}
+                    {% if not auth.user.firstname and not auth.user.lastname %}{{auth.user.pseudo}}{% else %}{{auth.user.firstname}} {{auth.user.lastname}}{% endif %}
+                  {% else %} {{_.getText('Mon compte')}} {% endif %}
+                </a>
+              </li>
+              {% if auth.isConnected == false %}<li><a href="/signup">{{_.getText('Créer un compte')}}</a></li>{% endif %}
+              <li>
+                {% if  auth.isConnected == false %}
+                  <a href="/login">{{_.getText('Se connecter')}}</a>
+                {% else %}
+                  <a href="/logout" class="log-out">{{_.getText('Déconnexion')}}</a>
+                {% endif %}
+              </li>
+              <!-- <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe"></i> Languages <span class="caret"></span></a>
+                <ul class="dropdown-menu languages-switch">
+                  <li><a href="/language/change/fr_FR">Français</a></li>
+                  <li><a href="/language/change/en_US">English</a></li>
+                  <li><a href="/language/change/de_DE">Deutsch</a></li>
+                  <li><a href="/language/change/es_ES">Español</a></li>
+                  <li><a href="/language/change/it_IT">Italiano</a></li>
+                  <li><a href="/language/change/nl_NL">Nederlands</a></li>
+                </ul>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        {% block body %}
+
+        {% endblock %}
+      </div>
+    </div>
+    <footer>
+      <div class="footer-top-side pd-30">
+        <!-- <a href="/about">À propos</a> -->
+        <a href="/terms">Conditions générales d'utilisation</a>
+        <a href="mailto:contact@myafrideal.fr">contact@myafrideal.fr</a>
+        <p>&copy; Copyright 2017 - myafrideal - {{_.getText('Tout droit reservé.')}}</p>
+      </div>
+      <div class="footer-bottom-side">
+        <a href="https://www.facebook.com/Myafrideal-566274450380716/" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+        <a href="https://www.instagram.com/myafrideal/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+        <a href="#" target="_blank"><i class="fa fa-snapchat-square fa-2x"></i></a>
+        <a href="https://www.youtube.com/channel/UCeS8yBM2P5sKIlzXM6YXMfw" target="_blank"><i class="fa fa-youtube-square fa-2x"></i></a>
+      </div>
+    </footer>
+    {{ asset.assignAssetFile(null,'lib/js/jquery.js',true) | raw }}
+    {{ asset.assignAssetFile(null,'lib/js/bootstrap.min.js',true) | raw }}
+    {{ asset.assignAssetFile(null,'js/lib/util.js',true) | raw }}
+    {{ asset.assignAssetFile(null,'js/lib/template-builder.js',true) | raw }}
+    {{ asset.assignAssetFile(null,'lib/js/jquery-ui-1.11.2.custom/jquery-ui.min.js',true) | raw }}
+    {{ asset.assignAssetFile(null,'js/lib/search-engine.js',true) | raw }}
+    {% block javascripts %}
+    {% endblock %}
+  </body>
+</html>

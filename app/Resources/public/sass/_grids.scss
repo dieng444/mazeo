@@ -1,0 +1,326 @@
+@import "susyone";
+@import "compass/reset";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-sizing";
+@import "compass/css3/box-shadow";
+
+//default configuration
+$total-columns  : 4;
+$column-width   : 5em;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+$bg-color:#f6efe7;
+$base-r:#a0000d;
+$color-menu:#6b0008;
+$desktop_width:70em;
+$base-bf:#1f668c;
+$color-gray:#f3f5F8;
+//Layout dimmension
+$show-grid-backgrounds  : true;
+$media-layout_8: 42em 8;
+$media-layout_12: 64em 12;
+$font-family:'Open Sans',sans serif;
+$show-grid-backgrounds: true;
+$color-blue-light: #019cde;
+$color-blue: #337ab7;
+$color-darkblue: #205081;
+$color-white: #fff;
+$color-red : #a0000d; //#2fa7df
+$color-mixed: #6a161c;
+$color-red-hover: #b30617;
+$color-bd-gray: #ccc;
+$color-bd-gray-lite: #eee;
+$default-color: #333;
+$db-color-dark-blue:#603cba;
+$db-color-green:#01a300;
+$db-color-blue:#2d89fa;
+$db-color-purple:#b232ba;
+
+@mixin hover-effect() {
+    //border: solid 4px #666;
+    -webkit-transition: all 0.7s ease-out;
+    -moz-transition: all 0.7s ease-out;
+    -ms-transition: all 0.7s ease-out;
+    transition: all 0.7s ease-out;
+	visibility: hidden;
+
+    &:hover {
+        @include box-shadow(0 0 40px rgba(0,0,0,0.8));
+        -webkit-transform: scale(1.01);
+        -moz-transform: scale(1.01);
+        -ms-transform: scale(1.01);
+        transform: scale(1.01);
+		padding: 0;
+    }
+}
+@mixin img()
+{
+	width:auto;
+  max-width: 100%;
+	max-height:100%;
+	display:block;
+  margin: auto;
+}
+// @mixin img()
+// {
+// 	width:100%;
+// 	height:auto;
+// 	display:block;
+// }
+@mixin form-elmt-mobile() {
+  //width: 90%;
+  //margin: auto;
+  padding: 1em;
+}
+@mixin h2 {
+  font-family: "Lobster",cursive,sans-serif;
+  font-size:2em;
+  margin-top:50px;
+  text-align: center;
+}
+@mixin default-btn-hover
+{
+  background-color: #fff;
+  border-color: #ccc;
+  color: #333;
+}
+@mixin default-block()
+{
+  background-color:#fff;
+  padding:0.5em;
+  font-size:0.85em;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15),
+              -1px 0 0 rgba(0, 0, 0, 0.03),
+              1px 0 0 rgba(0, 0, 0, 0.03),
+              0 1px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom:7px;
+}
+@mixin default-link()
+{
+  color: #008cc9;
+  font-size: 13px;
+  //font-weight: bold;
+  line-height: 1.3;
+  padding-top:-10px;
+}
+@mixin section-button {
+    background: #ec552c none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 20px;
+    color: #ffffff;
+    display: inline-block;
+    font-family: "Montserrat",sans-serif;
+    font-size: 12.8px;
+    font-weight: 700;
+    padding: 7px 18px;
+    text-transform: uppercase;
+    transition: all 0.5s ease 0s;
+}
+@mixin btn()
+{
+    -moz-user-select: none;
+    background: none repeat scroll 0 0 padding-box transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font: 700 1em/1.334 Arial,sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px 0;
+    outline: 0 none;
+    padding: 6px 12px 7px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+@mixin btn-default {
+    // font: 700 1em/1.334 Arial,sans-serif;
+    margin: 5px 0;
+    outline: 0 none;
+    padding: 6px 12px 7px;
+}
+@mixin green-btn()
+{
+    // @include btn();
+    // background: linear-gradient(#00c328, #00ab23) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    // border-color: #00b124 #00991f #00841c;
+    // //background-color:$color-red;
+    // color: #fff;
+    // text-shadow: 0 -1px rgba(0, 0, 0, 0.15);
+    background-color: #00c328;
+    font-weight: 600;
+    color: #fff;
+      &:hover {
+        color: $color-white;
+        &:hover, &:active, &:focus {
+          color: $color-white;
+        }
+    }
+}
+@mixin red-btn()
+{
+  background-color: $color-red;
+  border-color: $color-red;
+  color: $color-white;
+  background-color: $color-red;
+  &:hover {
+    color: $color-white;
+    &:hover, &:active, &:focus {
+      color: $color-white;
+    }
+  }
+}
+@mixin blue-btn()
+{
+    @include btn();
+    background: linear-gradient(#5078c2, #3a5cac) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-color: #7099db #3153a6 #2c4892;
+    color: #fff;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.15);
+}
+@mixin yellow-btn()
+{
+  font-weight: 600;
+  background-color: #FAA732;
+  color: #fff;
+    &:hover {
+      color: $color-white;
+      &:hover, &:active, &:focus {
+        color: $color-white;
+      }
+  }
+    // @include btn();
+    // background-color: #FAA732;
+    // background-image: linear-gradient(to bottom, #FBB450, #F89406);
+    // background-repeat: repeat-x;
+    // border-color: #F89406;
+    // color: #FFFFFF;
+}
+@mixin success-message()
+{
+    /*background-color:rgba(181, 230, 29, 0.6);
+    border:1px solid #B5E61D;
+    border-radius:4px;
+    color:green;
+    font-weight:bold;*/
+    padding:5px;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border: 1px solid #d6e9c6;
+    //width:100%;
+}
+@mixin error-message()
+{
+    /*border:1px solid rgb(255,0,0);
+    background-color:rgba(255,0,0,0.1);
+    border-radius:4px;
+    color:#ff0000;
+    padding-right:0px;
+    padding-left:5px;
+    padding-top:7px;
+    padding-bottom:7px;*/
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+}
+@mixin input-error-message()
+{
+  color: #e21111;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  line-height: 1.3;
+}
+@mixin input-error()
+{
+  border: 1px solid #bd2c2c;
+}
+@mixin img-bgd-mode($image)
+{
+    background:url($image) no-repeat scroll 0 0 / 100% auto rgba(0, 0, 0, 0);
+}
+@mixin input-mode()
+{
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    //color: #555555;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    height:36px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+@mixin input-text-mode()
+{
+     width:100%;
+    @include input-mode();
+    color: #5e5e5e;
+    font-size: 14px;
+    font-weight: bold;
+    padding:0.5em;
+    height:35px;
+}
+@mixin input-btn-green-mode()
+{
+    width:100%;
+    @include btn();
+    height:40px;
+   @include green-btn();
+    //margin-top:10px;
+}
+@mixin input-btn-blue-mode()
+{
+    width:100%;
+    @include btn();
+    height:40px;
+   @include blue-btn();
+    margin-top:10px;
+}
+@mixin input-btn-yellow-mode()
+{
+    width:100%;
+    @include btn();
+    height:40px;
+   @include yellow-btn();
+    margin-top:10px;
+}
+@mixin box-shadow-mode()
+{
+    box-shadow: 50px 0 120px -20px #000000 inset,
+                50px 0 120px -40px #000000 inset,
+                -50px 0 120px -20px #000000 inset,
+                -50px 0 120px -40px #000000 inset,
+                0 10px 10px -10px #000000 inset,
+                0 -10px 10px -10px #000000 inset;
+}
+@mixin text-shadow-mode()
+{
+    text-shadow: 0 0 24px rgba(0, 0, 0, 0.5),
+                 0 0 64px rgba(0, 0, 0, 0.25),
+                 0 2px rgba(0, 0, 0, 0.75);
+}
+@mixin h-mode()
+{
+    font-size:1.4em;
+    line-height:1.32;
+    font-weight:bold;
+    margin-bottom:10px;
+    padding-top:20px;
+    text-align:center;
+}
+@mixin h-mode-16()
+{
+    font-size:1.2em;
+    line-height:1.32;
+    font-weight:bold;
+    margin-bottom:10px;
+    padding-top:20px;
+    text-align:center;
+}
+@mixin div-info {
+    padding: 10px;
+    background-color: #f5f5f5;
+    color: #777;
+    border: 1px solid $color-bd-gray;
+    border-bottom: none;
+}
