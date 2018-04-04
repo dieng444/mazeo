@@ -1,4 +1,4 @@
-# Mazeo Framework
+# Mazeo Framework - 2016
 
 Mazeo is php5 framework that allow developer to build strong and secure php web app
 
@@ -21,6 +21,7 @@ Mazeo is php5 framework that allow developer to build strong and secure php web 
 - Session Management
 - FlashInfo
 - Locale (Translator)
+- Dynamical console to build entity
 
 ## Install & Run the framework
 
@@ -39,6 +40,10 @@ Blablabla.............
 Blablabla.............
 
 Signup here
+
+## You can use the console.sh file build entities, package, form and manager
+
+Execute **sh console.sh** in command line to see what's possible to do with this console file
 
 
 
